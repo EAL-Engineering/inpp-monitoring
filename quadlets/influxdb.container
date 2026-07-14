@@ -7,6 +7,7 @@ Image=docker.io/library/influxdb:2
 
 ContainerName=influxdb
 
+Network=monitoring
 PublishPort=127.0.0.1:8086:8086
 
 Volume=%h/inpp-monitoring/influxdb/data:/var/lib/influxdb2:Z
