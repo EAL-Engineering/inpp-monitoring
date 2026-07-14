@@ -4,7 +4,18 @@ Decisions that have been made by various members of accelerator staff.  Keep thi
 
 ## 2026-07-14
 
-### Container Platform
+### Service Account - GML + Copilot
+
+Decision:
+Deploy monitoring infrastructure under `oual`.
+
+Reason:
+- Existing institutional account.
+- Existing access procedures.
+- Existing user-level services.
+- Reduces administrative complexity.
+
+### Container Platform - GML + Copilot
 
 Decision:
 Use Podman instead of Docker.
