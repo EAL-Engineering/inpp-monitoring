@@ -1,3 +1,8 @@
+# Operations
+
+This is how to perform various operations for the oual monitoring on the inpp
+server.
+
 ## Change to oual user
 
     sudo machinectl shell oual@

@@ -1,0 +1,18 @@
+[Unit]
+Description=INPP InfluxDB
+After=network-online.target
+
+[Container]
+Image=docker.io/library/influxdb:2
+
+ContainerName=influxdb
+
+PublishPort=127.0.0.1:8086:8086
+
+Volume=%h/inpp-monitoring/influxdb/data:/var/lib/influxdb2:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
