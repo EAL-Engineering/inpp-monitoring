@@ -1,0 +1,21 @@
+[Unit]
+Description=INPP Grafana
+After=network-online.target influxdb.service
+
+[Container]
+Image=docker.io/grafana/grafana:latest
+
+ContainerName=grafana
+
+PublishPort=127.0.0.1:3000:3000
+
+Volume=%h/inpp-monitoring/grafana/data:/var/lib/grafana:Z
+
+Environment=GF_SERVER_ROOT_URL=http://cas-web-lp005.phy.ohio.edu/grafana/
+Environment=GF_SERVER_SERVE_FROM_SUB_PATH=true
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
