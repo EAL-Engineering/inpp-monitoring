@@ -5,6 +5,20 @@ like a logbook with the newest entries at the top.
 
 ## 2026-07-14
 
+### Grafana Reverse Proxy
+
+Issue: Apache proxying resulted in an infinite redirect loop.
+
+Root Cause: Grafana was configured to serve from /grafana/, but Apache stripped
+the /grafana prefix before forwarding requests. The last line fixes a problem
+where grafana reports origin not allowed when trying to change the password.
+
+Working Configuration:
+
+    ProxyPass /grafana/ http://127.0.0.1:3000/grafana/
+    ProxyPassReverse /grafana/ http://127.0.0.1:3000/grafana/
+    ProxyPreserveHost On
+
 ### Grafana Data Directory Ownership
 
 The official Grafana container runs as:
