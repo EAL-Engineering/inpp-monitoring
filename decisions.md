@@ -5,6 +5,30 @@ like a logbook with the newest entries at the top.
 
 ## 2026-07-14
 
+### Grafana Data Directory Ownership
+
+The official Grafana container runs as:
+
+    uid=472
+    gid=0
+
+After creating the data directory, ownership must be adjusted:
+
+    podman unshare chown -R 472:0 ~/inpp-monitoring/grafana/data
+
+Verify:
+
+    podman unshare stat ~/inpp-monitoring/grafana/data
+
+Expected:
+
+    Uid: (472/...)
+    Gid: (0/root)
+
+If ownership is not corrected, Grafana fails with:
+
+    GF_PATHS_DATA='/var/lib/grafana' is not writable
+
 ### Data Storage Location - GML + Copilot
 
 Decision: Store Grafana and InfluxDB persistent data under the oual home
